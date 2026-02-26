@@ -9,6 +9,12 @@ import SwiftUI
 
 @main
 struct LeaveNowApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    init() {
+        MonitorService.registerBackgroundTask()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

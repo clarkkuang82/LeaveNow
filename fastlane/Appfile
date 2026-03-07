@@ -1,0 +1,7 @@
+app_identifier "clark.LeaveNow"
+
+# Your Apple Developer Portal Apple ID.
+# apple_id "your@email.com"
+
+# Your App Store Connect Team ID (if you are in multiple teams).
+# team_id "XXXXXXXXXX"

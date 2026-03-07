@@ -1,0 +1,47 @@
+default_platform(:ios)
+
+platform :ios do
+
+  # Run unit and UI tests
+  desc "Run all tests"
+  lane :tests do
+    run_tests(
+      project: "LeaveNow.xcodeproj",
+      scheme: "LeaveNow",
+      devices: ["iPhone 16"],
+      code_coverage: true
+    )
+  end
+
+  # Build and upload a new beta to TestFlight
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    increment_build_number(xcodeproj: "LeaveNow.xcodeproj")
+    build_app(
+      project: "LeaveNow.xcodeproj",
+      scheme: "LeaveNow",
+      export_options: "ExportOptions.plist"
+    )
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  # Build and submit to App Store for review
+  desc "Push a new release build to the App Store"
+  lane :release do
+    increment_build_number(xcodeproj: "LeaveNow.xcodeproj")
+    build_app(
+      project: "LeaveNow.xcodeproj",
+      scheme: "LeaveNow",
+      export_options: "ExportOptions.plist"
+    )
+    upload_to_app_store(
+      force: true,                   # Skip HTML report verification
+      submit_for_review: true,
+      automatic_release: false,      # Manually release after approval
+      submission_information: {
+        export_compliance_uses_encryption: false
+      }
+    )
+  end
+
+end

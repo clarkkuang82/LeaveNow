@@ -37,6 +37,9 @@ final class MonitorService: ObservableObject {
         timer?.invalidate()
         timer = nil
         isMonitoring = false
+        lastCheckTime = nil
+        lastDurationMinutes = nil
+        lastError = nil
     }
 
     private func scheduleNextCheck() {

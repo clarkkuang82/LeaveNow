@@ -43,6 +43,7 @@ final class NotificationService: ObservableObject {
     /// Send local "time to leave" notification (shows in foreground via AppDelegate.willPresent).
     /// Uses summaryArgument and relevanceScore so it mirrors and displays well on Apple Watch.
     func sendLeaveNowNotification(estimatedMinutes: Int) {
+        guard authorizationStatus == .authorized else { return }
         let content = UNMutableNotificationContent()
         content.title = "Time to leave!"
         content.body = "ETA is \(estimatedMinutes) min. Consider leaving now."

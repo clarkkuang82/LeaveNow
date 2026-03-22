@@ -40,15 +40,22 @@ enum MapsURLOpener {
     static func openInAppleMaps(origin: String, destination: String) {
         Task { @MainActor in
             let geocoder = CLGeocoder()
-            guard let oMarks = try? await geocoder.geocodeAddressString(origin),
-                  let dMarks = try? await geocoder.geocodeAddressString(destination),
-                  let o = oMarks.first?.location,
-                  let d = dMarks.first?.location else { return }
-            let start = MKMapItem(placemark: MKPlacemark(coordinate: o.coordinate, addressDictionary: nil))
-            start.name = origin
-            let end = MKMapItem(placemark: MKPlacemark(coordinate: d.coordinate, addressDictionary: nil))
-            end.name = destination
-            MKMapItem.openMaps(with: [start, end], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+            if let oMarks = try? await geocoder.geocodeAddressString(origin),
+               let dMarks = try? await geocoder.geocodeAddressString(destination),
+               let o = oMarks.first?.location,
+               let d = dMarks.first?.location {
+                let start = MKMapItem(placemark: MKPlacemark(coordinate: o.coordinate, addressDictionary: nil))
+                start.name = origin
+                let end = MKMapItem(placemark: MKPlacemark(coordinate: d.coordinate, addressDictionary: nil))
+                end.name = destination
+                MKMapItem.openMaps(with: [start, end], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+            } else {
+                let s = origin.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? origin
+                let d = destination.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? destination
+                if let url = URL(string: "https://maps.apple.com/?saddr=\(s)&daddr=\(d)&dirflg=d") {
+                    await UIApplication.shared.open(url)
+                }
+            }
         }
     }
 }

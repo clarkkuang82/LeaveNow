@@ -100,13 +100,17 @@ struct RoutePreviewView: View {
                 startCoord = result.start
                 endCoord = result.end
                 if result.coordinates.count >= 2 {
+                    let lats = result.coordinates.map(\.latitude)
+                    let lons = result.coordinates.map(\.longitude)
                     let center = CLLocationCoordinate2D(
-                        latitude: (result.start.latitude + result.end.latitude) / 2,
-                        longitude: (result.start.longitude + result.end.longitude) / 2
+                        latitude: (lats.min()! + lats.max()!) / 2,
+                        longitude: (lons.min()! + lons.max()!) / 2
                     )
+                    let latDelta = max(0.01, (lats.max()! - lats.min()!) * 1.4)
+                    let lonDelta = max(0.01, (lons.max()! - lons.min()!) * 1.4)
                     let region = MKCoordinateRegion(
                         center: center,
-                        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        span: MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
                     )
                     position = .region(region)
                 }

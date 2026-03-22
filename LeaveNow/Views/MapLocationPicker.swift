@@ -157,8 +157,15 @@ struct MapLocationPicker: View {
                         dismiss()
                     }
                     .buttonStyle(.bordered)
-                    Button("Use this location") {
+                    Button {
                         confirmLocation()
+                    } label: {
+                        if isResolving {
+                            ProgressView()
+                                .controlSize(.small)
+                        } else {
+                            Text("Use this location")
+                        }
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(isResolving)

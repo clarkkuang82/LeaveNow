@@ -87,7 +87,7 @@ struct ContentView: View {
 
                 Section {
                     if let t = monitor.lastCheckTime {
-                        Label("Last check: \(t.formatted(.dateTime.hour().minute()))", systemImage: "clock")
+                        Label("Last check: \(t.formatted(date: .omitted, time: .shortened))", systemImage: "clock")
                     }
                     if let m = monitor.lastDurationMinutes {
                         Button {

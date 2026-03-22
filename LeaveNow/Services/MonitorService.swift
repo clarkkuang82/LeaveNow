@@ -18,6 +18,8 @@ final class MonitorService: ObservableObject {
     @Published private(set) var lastError: String?
 
     private var timer: Timer?
+    private var isChecking = false
+    private var hasNotifiedThisCycle = false
     private var configStore: ConfigStore { ConfigStore.shared }
     private var routeService: RouteService { RouteService.shared }
     private var notificationService: NotificationService { NotificationService.shared }
@@ -37,6 +39,8 @@ final class MonitorService: ObservableObject {
         timer?.invalidate()
         timer = nil
         isMonitoring = false
+        isChecking = false
+        hasNotifiedThisCycle = false
         lastCheckTime = nil
         lastDurationMinutes = nil
         lastError = nil
@@ -55,8 +59,10 @@ final class MonitorService: ObservableObject {
 
     func performCheck() async {
         let config = configStore.config
-        guard config.isValid else { return }
+        guard config.isValid, !isChecking else { return }
 
+        isChecking = true
+        defer { isChecking = false }
         lastError = nil
 
         do {
@@ -65,8 +71,11 @@ final class MonitorService: ObservableObject {
             lastCheckTime = Date()
             lastDurationMinutes = minutes
 
-            if minutes <= config.targetMinutes {
+            if minutes <= config.targetMinutes && !hasNotifiedThisCycle {
+                hasNotifiedThisCycle = true
                 notificationService.sendLeaveNowNotification(estimatedMinutes: minutes)
+            } else if minutes > config.targetMinutes {
+                hasNotifiedThisCycle = false
             }
         } catch {
             lastError = error.localizedDescription

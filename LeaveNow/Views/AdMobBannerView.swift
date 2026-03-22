@@ -47,11 +47,15 @@ private struct BannerViewContainer: UIViewRepresentable {
 
     final class Coordinator: NSObject, BannerViewDelegate {
         func bannerViewDidReceiveAd(_ bannerView: BannerView) {
+            #if DEBUG
             print("AdMob banner loaded.")
+            #endif
         }
 
         func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
+            #if DEBUG
             print("AdMob banner failed to load: \(error.localizedDescription)")
+            #endif
         }
     }
 }

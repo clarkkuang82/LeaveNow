@@ -10,7 +10,7 @@ import BackgroundTasks
 @MainActor
 final class MonitorService: ObservableObject {
     static let shared = MonitorService()
-    static let bgTaskIdentifier = "clark.LeaveNow.refresh"
+    static let bgTaskIdentifier = "com.clarkkuang.leavenow.refresh"
 
     @Published private(set) var isMonitoring = false
     @Published private(set) var lastCheckTime: Date?

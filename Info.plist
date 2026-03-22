@@ -16,7 +16,7 @@
 	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>clark.LeaveNow.refresh</string>
+		<string>com.clarkkuang.leavenow.refresh</string>
 	</array>
 	<!-- AdMob configuration -->
 	<key>GADApplicationIdentifier</key>

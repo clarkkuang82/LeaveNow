@@ -18,6 +18,9 @@ struct LeaveNowApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    MonitorService.shared.restoreIfNeeded()
+                }
         }
     }
 }

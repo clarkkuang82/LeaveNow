@@ -20,6 +20,7 @@ final class MonitorService: ObservableObject {
     private var timer: Timer?
     private var isChecking = false
     private var hasNotifiedThisCycle = false
+    private static let isMonitoringKey = "LeaveNow.isMonitoring"
     private var configStore: ConfigStore { ConfigStore.shared }
     private var routeService: RouteService { RouteService.shared }
     private var notificationService: NotificationService { NotificationService.shared }
@@ -28,22 +29,35 @@ final class MonitorService: ObservableObject {
 
     func startMonitoring() {
         guard configStore.config.isValid else { return }
-        stopMonitoring()
+        stopTimer()
         isMonitoring = true
+        UserDefaults.standard.set(true, forKey: Self.isMonitoringKey)
         lastError = nil
         scheduleNextCheck()
         scheduleBackgroundRefresh()
     }
 
     func stopMonitoring() {
-        timer?.invalidate()
-        timer = nil
+        stopTimer()
         isMonitoring = false
+        UserDefaults.standard.set(false, forKey: Self.isMonitoringKey)
         isChecking = false
         hasNotifiedThisCycle = false
         lastCheckTime = nil
         lastDurationMinutes = nil
         lastError = nil
+    }
+
+    func restoreIfNeeded() {
+        guard !isMonitoring,
+              UserDefaults.standard.bool(forKey: Self.isMonitoringKey),
+              configStore.config.isValid else { return }
+        startMonitoring()
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 
     private func scheduleNextCheck() {

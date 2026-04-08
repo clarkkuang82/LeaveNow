@@ -7,14 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97BBFDF92F861636008FDE1E /* TripConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF72F861636008FDE1E /* TripConfig.swift */; };
+		97BBFDFA2F861636008FDE1E /* SharedMonitorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF62F861636008FDE1E /* SharedMonitorState.swift */; };
+		97BBFDFB2F861636008FDE1E /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF52F861636008FDE1E /* SharedDefaults.swift */; };
+		97BBFDFC2F861636008FDE1E /* LeaveNowActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF42F861636008FDE1E /* LeaveNowActivityAttributes.swift */; };
+		97BBFE1D2F861A2F008FDE1E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BBFE1C2F861A2F008FDE1E /* WidgetKit.framework */; };
+		97BBFE1F2F861A2F008FDE1E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BBFE1E2F861A2F008FDE1E /* SwiftUI.framework */; };
+		97BBFE2C2F861A31008FDE1E /* LeaveNowWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 97BBFE1A2F861A2F008FDE1E /* LeaveNowWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		97BBFE462F861BC0008FDE1E /* LeaveNowActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF42F861636008FDE1E /* LeaveNowActivityAttributes.swift */; };
+		97BBFE472F861BC0008FDE1E /* TripConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF72F861636008FDE1E /* TripConfig.swift */; };
+		97BBFE482F861BC0008FDE1E /* SharedMonitorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF62F861636008FDE1E /* SharedMonitorState.swift */; };
+		97BBFE492F861BC0008FDE1E /* SharedDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BBFDF52F861636008FDE1E /* SharedDefaults.swift */; };
 		97C66C202F4EC48A003B903C /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 97C66C1F2F4EC48A003B903C /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		97BBFE052F8616DC008FDE1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C66B972F4E8DCC003B903C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97C66B9E2F4E8DCC003B903C;
+			remoteInfo = LeaveNow;
+		};
+		97BBFE2A2F861A31008FDE1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C66B972F4E8DCC003B903C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97BBFE192F861A2F008FDE1E;
+			remoteInfo = LeaveNowWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		97BBFE312F861A31008FDE1E /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				97BBFE2C2F861A31008FDE1E /* LeaveNowWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		97BBFDF42F861636008FDE1E /* LeaveNowActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowActivityAttributes.swift; sourceTree = "<group>"; };
+		97BBFDF52F861636008FDE1E /* SharedDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDefaults.swift; sourceTree = "<group>"; };
+		97BBFDF62F861636008FDE1E /* SharedMonitorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMonitorState.swift; sourceTree = "<group>"; };
+		97BBFDF72F861636008FDE1E /* TripConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripConfig.swift; sourceTree = "<group>"; };
+		97BBFE012F8616DC008FDE1E /* LeaveNowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeaveNowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97BBFE1A2F861A2F008FDE1E /* LeaveNowWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LeaveNowWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		97BBFE1C2F861A2F008FDE1E /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		97BBFE1E2F861A2F008FDE1E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		97BBFE4A2F861C71008FDE1E /* LeaveNowWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LeaveNowWidgetExtension.entitlements; sourceTree = "<group>"; };
 		97C66B9F2F4E8DCC003B903C /* LeaveNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeaveNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		97BBFE2D2F861A31008FDE1E /* Exceptions for "LeaveNowWidget" folder in "LeaveNowWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 97BBFE192F861A2F008FDE1E /* LeaveNowWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		97BBFE022F8616DC008FDE1E /* LeaveNowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LeaveNowTests;
+			sourceTree = "<group>";
+		};
+		97BBFE202F861A2F008FDE1E /* LeaveNowWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				97BBFE2D2F861A31008FDE1E /* Exceptions for "LeaveNowWidget" folder in "LeaveNowWidgetExtension" target */,
+			);
+			path = LeaveNowWidget;
+			sourceTree = "<group>";
+		};
 		97C66BA12F4E8DCC003B903C /* LeaveNow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = LeaveNow;
@@ -23,6 +97,22 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		97BBFDFE2F8616DC008FDE1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97BBFE172F861A2F008FDE1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97BBFE1F2F861A2F008FDE1E /* SwiftUI.framework in Frameworks */,
+				97BBFE1D2F861A2F008FDE1E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97C66B9C2F4E8DCC003B903C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -34,10 +124,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97BBFDF82F861636008FDE1E /* LeaveNowShared */ = {
+			isa = PBXGroup;
+			children = (
+				97BBFDF42F861636008FDE1E /* LeaveNowActivityAttributes.swift */,
+				97BBFDF52F861636008FDE1E /* SharedDefaults.swift */,
+				97BBFDF62F861636008FDE1E /* SharedMonitorState.swift */,
+				97BBFDF72F861636008FDE1E /* TripConfig.swift */,
+			);
+			path = LeaveNowShared;
+			sourceTree = "<group>";
+		};
+		97BBFE1B2F861A2F008FDE1E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97BBFE1C2F861A2F008FDE1E /* WidgetKit.framework */,
+				97BBFE1E2F861A2F008FDE1E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		97C66B962F4E8DCC003B903C = {
 			isa = PBXGroup;
 			children = (
+				97BBFE4A2F861C71008FDE1E /* LeaveNowWidgetExtension.entitlements */,
+				97BBFDF82F861636008FDE1E /* LeaveNowShared */,
 				97C66BA12F4E8DCC003B903C /* LeaveNow */,
+				97BBFE022F8616DC008FDE1E /* LeaveNowTests */,
+				97BBFE202F861A2F008FDE1E /* LeaveNowWidget */,
+				97BBFE1B2F861A2F008FDE1E /* Frameworks */,
 				97C66BA02F4E8DCC003B903C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				97C66B9F2F4E8DCC003B903C /* LeaveNow.app */,
+				97BBFE012F8616DC008FDE1E /* LeaveNowTests.xctest */,
+				97BBFE1A2F861A2F008FDE1E /* LeaveNowWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +170,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		97BBFE002F8616DC008FDE1E /* LeaveNowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97BBFE072F8616DC008FDE1E /* Build configuration list for PBXNativeTarget "LeaveNowTests" */;
+			buildPhases = (
+				97BBFDFD2F8616DC008FDE1E /* Sources */,
+				97BBFDFE2F8616DC008FDE1E /* Frameworks */,
+				97BBFDFF2F8616DC008FDE1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97BBFE062F8616DC008FDE1E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				97BBFE022F8616DC008FDE1E /* LeaveNowTests */,
+			);
+			name = LeaveNowTests;
+			packageProductDependencies = (
+			);
+			productName = LeaveNowTests;
+			productReference = 97BBFE012F8616DC008FDE1E /* LeaveNowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		97BBFE192F861A2F008FDE1E /* LeaveNowWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97BBFE2E2F861A31008FDE1E /* Build configuration list for PBXNativeTarget "LeaveNowWidgetExtension" */;
+			buildPhases = (
+				97BBFE162F861A2F008FDE1E /* Sources */,
+				97BBFE172F861A2F008FDE1E /* Frameworks */,
+				97BBFE182F861A2F008FDE1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				97BBFE202F861A2F008FDE1E /* LeaveNowWidget */,
+			);
+			name = LeaveNowWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = LeaveNowWidgetExtension;
+			productReference = 97BBFE1A2F861A2F008FDE1E /* LeaveNowWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		97C66B9E2F4E8DCC003B903C /* LeaveNow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C66BAA2F4E8DCE003B903C /* Build configuration list for PBXNativeTarget "LeaveNow" */;
@@ -60,10 +222,12 @@
 				97C66B9B2F4E8DCC003B903C /* Sources */,
 				97C66B9C2F4E8DCC003B903C /* Frameworks */,
 				97C66B9D2F4E8DCC003B903C /* Resources */,
+				97BBFE312F861A31008FDE1E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				97BBFE2B2F861A31008FDE1E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				97C66BA12F4E8DCC003B903C /* LeaveNow */,
@@ -83,9 +247,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					97BBFE002F8616DC008FDE1E = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 97C66B9E2F4E8DCC003B903C;
+					};
+					97BBFE192F861A2F008FDE1E = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					97C66B9E2F4E8DCC003B903C = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -109,11 +280,27 @@
 			projectRoot = "";
 			targets = (
 				97C66B9E2F4E8DCC003B903C /* LeaveNow */,
+				97BBFE002F8616DC008FDE1E /* LeaveNowTests */,
+				97BBFE192F861A2F008FDE1E /* LeaveNowWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		97BBFDFF2F8616DC008FDE1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97BBFE182F861A2F008FDE1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97C66B9D2F4E8DCC003B903C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,16 +311,147 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		97C66B9B2F4E8DCC003B903C /* Sources */ = {
+		97BBFDFD2F8616DC008FDE1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		97BBFE162F861A2F008FDE1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97BBFE462F861BC0008FDE1E /* LeaveNowActivityAttributes.swift in Sources */,
+				97BBFE472F861BC0008FDE1E /* TripConfig.swift in Sources */,
+				97BBFE482F861BC0008FDE1E /* SharedMonitorState.swift in Sources */,
+				97BBFE492F861BC0008FDE1E /* SharedDefaults.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97C66B9B2F4E8DCC003B903C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97BBFDF92F861636008FDE1E /* TripConfig.swift in Sources */,
+				97BBFDFA2F861636008FDE1E /* SharedMonitorState.swift in Sources */,
+				97BBFDFB2F861636008FDE1E /* SharedDefaults.swift in Sources */,
+				97BBFDFC2F861636008FDE1E /* LeaveNowActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		97BBFE062F8616DC008FDE1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97C66B9E2F4E8DCC003B903C /* LeaveNow */;
+			targetProxy = 97BBFE052F8616DC008FDE1E /* PBXContainerItemProxy */;
+		};
+		97BBFE2B2F861A31008FDE1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97BBFE192F861A2F008FDE1E /* LeaveNowWidgetExtension */;
+			targetProxy = 97BBFE2A2F861A31008FDE1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		97BBFE082F8616DC008FDE1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J365F9ML99;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clark.LeaveNowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeaveNow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeaveNow";
+			};
+			name = Debug;
+		};
+		97BBFE092F8616DC008FDE1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J365F9ML99;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = clark.LeaveNowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeaveNow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LeaveNow";
+			};
+			name = Release;
+		};
+		97BBFE2F2F861A31008FDE1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LeaveNowWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J365F9ML99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LeaveNowWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LeaveNowWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clarkkuang.leavenow.LeaveNowWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97BBFE302F861A31008FDE1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = LeaveNowWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J365F9ML99;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LeaveNowWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LeaveNowWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clarkkuang.leavenow.LeaveNowWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		97C66BA82F4E8DCE003B903C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -258,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LeaveNow/LeaveNow.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J365F9ML99;
@@ -292,6 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LeaveNow/LeaveNow.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J365F9ML99;
@@ -324,6 +644,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		97BBFE072F8616DC008FDE1E /* Build configuration list for PBXNativeTarget "LeaveNowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97BBFE082F8616DC008FDE1E /* Debug */,
+				97BBFE092F8616DC008FDE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97BBFE2E2F861A31008FDE1E /* Build configuration list for PBXNativeTarget "LeaveNowWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97BBFE2F2F861A31008FDE1E /* Debug */,
+				97BBFE302F861A31008FDE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		97C66B9A2F4E8DCC003B903C /* Build configuration list for PBXProject "LeaveNow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

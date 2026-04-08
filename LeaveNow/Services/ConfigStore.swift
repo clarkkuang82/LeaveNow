@@ -20,7 +20,9 @@ final class ConfigStore: ObservableObject {
         let store = defaults ?? SharedDefaults.suite
         self.defaults = store
         // One-time migration from UserDefaults.standard to shared suite
-        if store.data(forKey: key) == nil,
+        // Skip migration when explicit defaults are injected (e.g. tests)
+        if defaults == nil,
+           store.data(forKey: key) == nil,
            let legacyData = UserDefaults.standard.data(forKey: key) {
             store.set(legacyData, forKey: key)
         }

@@ -75,6 +75,13 @@ final class SharedMonitorStateTests: XCTestCase {
         XCTAssertEqual(loaded, state)
     }
 
+    func testSharedDefaultsSuiteIsNotStandard() {
+        // Ensures App Group entitlement is configured correctly.
+        // If SharedDefaults.suite falls back to .standard, the widget can't read app data.
+        let suite = UserDefaults(suiteName: SharedDefaults.suiteName)
+        XCTAssertNotNil(suite, "App Group '\(SharedDefaults.suiteName)' is not accessible — check entitlements")
+    }
+
     func testSaveOverwritesPreviousState() {
         let state1 = SharedMonitorState(
             isMonitoring: true,

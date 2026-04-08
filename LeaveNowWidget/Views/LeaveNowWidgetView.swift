@@ -36,6 +36,9 @@ struct LeaveNowWidgetView: View {
                 Text("min ETA")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                Text(statusText)
+                    .font(.caption2)
+                    .foregroundStyle(statusColor)
             } else {
                 Text("--")
                     .font(.system(size: 40, weight: .bold, design: .rounded))
@@ -64,6 +67,10 @@ struct LeaveNowWidgetView: View {
                     Text("min")
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                    Text(statusText)
+                        .font(.caption2)
+                        .bold()
+                        .foregroundStyle(statusColor)
                 } else {
                     Text("--")
                         .font(.system(size: 36, weight: .bold, design: .rounded))
@@ -127,15 +134,15 @@ struct LeaveNowWidgetView: View {
 
     private var statusIcon: String {
         guard let state = entry.state, state.isMonitoring else {
-            return "car.fill"
+            return "moon.zzz.fill"
         }
         if state.lastError != nil {
             return "exclamationmark.triangle.fill"
         }
         if let eta = state.lastDurationMinutes, eta <= state.targetMinutes {
-            return "figure.walk"
+            return "car.fill"
         }
-        return "car.fill"
+        return "cup.and.saucer.fill"
     }
 
     private var statusColor: Color {
@@ -144,14 +151,25 @@ struct LeaveNowWidgetView: View {
         }
         if state.lastError != nil { return .orange }
         if let eta = state.lastDurationMinutes, eta <= state.targetMinutes {
-            return .red
+            return .green
         }
-        return .green
+        return .yellow
+    }
+
+    private var statusText: String {
+        guard let state = entry.state, state.isMonitoring else {
+            return "Not Active"
+        }
+        if state.lastError != nil { return "Error" }
+        if let eta = state.lastDurationMinutes, eta <= state.targetMinutes {
+            return "Time to Go!"
+        }
+        return "Not Yet"
     }
 
     private var etaColor: Color {
         guard let state = entry.state,
               let eta = state.lastDurationMinutes else { return .primary }
-        return eta <= state.targetMinutes ? .red : .primary
+        return eta <= state.targetMinutes ? .green : .primary
     }
 }

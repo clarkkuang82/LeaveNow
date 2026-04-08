@@ -5,6 +5,7 @@
 
 import SwiftUI
 import ActivityKit
+import WidgetKit
 
 struct LeaveNowLockScreenView: View {
     let context: ActivityViewContext<LeaveNowActivityAttributes>

@@ -6,6 +6,7 @@
 import Foundation
 import Combine
 import BackgroundTasks
+import WidgetKit
 
 @MainActor
 final class MonitorService: ObservableObject {
@@ -24,6 +25,7 @@ final class MonitorService: ObservableObject {
     private var configStore: ConfigStore { ConfigStore.shared }
     private var routeService: RouteService { RouteService.shared }
     private var notificationService: NotificationService { NotificationService.shared }
+    private var liveActivityService: LiveActivityService { LiveActivityService.shared }
 
     private init() {}
 
@@ -31,8 +33,10 @@ final class MonitorService: ObservableObject {
         guard configStore.config.isValid else { return }
         stopTimer()
         isMonitoring = true
-        UserDefaults.standard.set(true, forKey: Self.isMonitoringKey)
+        SharedDefaults.suite.set(true, forKey: Self.isMonitoringKey)
         lastError = nil
+        syncSharedState()
+        liveActivityService.startActivity(config: configStore.config)
         scheduleNextCheck()
         scheduleBackgroundRefresh()
     }
@@ -40,17 +44,19 @@ final class MonitorService: ObservableObject {
     func stopMonitoring() {
         stopTimer()
         isMonitoring = false
-        UserDefaults.standard.set(false, forKey: Self.isMonitoringKey)
+        SharedDefaults.suite.set(false, forKey: Self.isMonitoringKey)
         isChecking = false
         hasNotifiedThisCycle = false
         lastCheckTime = nil
         lastDurationMinutes = nil
         lastError = nil
+        syncSharedState()
+        liveActivityService.endActivity()
     }
 
     func restoreIfNeeded() {
         guard !isMonitoring,
-              UserDefaults.standard.bool(forKey: Self.isMonitoringKey),
+              SharedDefaults.suite.bool(forKey: Self.isMonitoringKey),
               configStore.config.isValid else { return }
         startMonitoring()
     }
@@ -91,8 +97,21 @@ final class MonitorService: ObservableObject {
             } else if minutes > config.targetMinutes {
                 hasNotifiedThisCycle = false
             }
+
+            syncSharedState()
+            liveActivityService.updateActivity(
+                etaMinutes: minutes,
+                lastCheckTime: Date(),
+                error: nil
+            )
         } catch {
             lastError = error.localizedDescription
+            syncSharedState()
+            liveActivityService.updateActivity(
+                etaMinutes: lastDurationMinutes,
+                lastCheckTime: lastCheckTime ?? Date(),
+                error: error.localizedDescription
+            )
         }
     }
 
@@ -105,6 +124,21 @@ final class MonitorService: ObservableObject {
         } catch {
             // Background task may be unavailable (e.g. simulator)
         }
+    }
+
+    private func syncSharedState() {
+        let config = configStore.config
+        let state = SharedMonitorState(
+            isMonitoring: isMonitoring,
+            lastCheckTime: lastCheckTime,
+            lastDurationMinutes: lastDurationMinutes,
+            lastError: lastError,
+            originAddress: config.originAddress,
+            destinationAddress: config.destinationAddress,
+            targetMinutes: config.targetMinutes
+        )
+        state.save()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     static func registerBackgroundTask() {

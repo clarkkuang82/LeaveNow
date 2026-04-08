@@ -10,13 +10,23 @@ final class ConfigStore: ObservableObject {
     static let shared = ConfigStore()
 
     private let key = "LeaveNow.TripConfig"
+    private let defaults: UserDefaults
 
     @Published private(set) var config: TripConfig {
         didSet { save() }
     }
 
-    init() {
-        if let data = UserDefaults.standard.data(forKey: key),
+    init(defaults: UserDefaults? = nil) {
+        let store = defaults ?? SharedDefaults.suite
+        self.defaults = store
+        // One-time migration from UserDefaults.standard to shared suite
+        // Skip migration when explicit defaults are injected (e.g. tests)
+        if defaults == nil,
+           store.data(forKey: key) == nil,
+           let legacyData = UserDefaults.standard.data(forKey: key) {
+            store.set(legacyData, forKey: key)
+        }
+        if let data = store.data(forKey: key),
            let decoded = try? JSONDecoder().decode(TripConfig.self, from: data) {
             config = decoded
         } else {
@@ -39,6 +49,6 @@ final class ConfigStore: ObservableObject {
 
     private func save() {
         guard let data = try? JSONEncoder().encode(config) else { return }
-        UserDefaults.standard.set(data, forKey: key)
+        defaults.set(data, forKey: key)
     }
 }

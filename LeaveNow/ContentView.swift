@@ -129,8 +129,13 @@ struct ContentView: View {
                 }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(DS.bg.ignoresSafeArea())
             .navigationTitle("Time to Leave")
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    SealMark(character: "出", size: 22)
+                }
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("Done") {
